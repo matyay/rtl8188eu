@@ -2494,9 +2494,9 @@ sint validate_recv_frame(_adapter *adapter, union recv_frame *precv_frame)
 					dump_rx_packet(ptr);
 			}
 			#endif
-		} else
+		} else {
 			DBG_COUNTER(adapter->rx_logs.core_rx_pre_data_handled);
-		break;
+		} break;
 	default:
 		DBG_COUNTER(adapter->rx_logs.core_rx_pre_unknown);
 		#ifdef DBG_RX_DROP_FRAME
@@ -4091,7 +4091,7 @@ int recv_frame_monitor(_adapter *padapter, union recv_frame *rframe)
 	if (!RTW_CANNOT_RUN(padapter)) {
 		/* indicate this recv_frame */
 		ret = rtw_recv_monitor(padapter, rframe);
-	} else 
+	} else
 		ret = _FAIL;
 
 exit:
@@ -4260,7 +4260,7 @@ int recv_func(_adapter *padapter, union recv_frame *rframe)
 	u8 type;
 #endif
 
-	if (check_fwstate(mlmepriv, WIFI_MONITOR_STATE) 
+	if (check_fwstate(mlmepriv, WIFI_MONITOR_STATE)
 #ifdef RTW_SIMPLE_CONFIG
 		|| (check_fwstate(mlmepriv, WIFI_AP_STATE) && padapter->rtw_simple_config == _TRUE && IS_MCAST(get_ra(ptr)))
 #endif
